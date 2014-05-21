@@ -16,6 +16,7 @@
 		## get returns the matrix x
 		get <- function() x
 		## setinverse creates an inverse matrix m via the solve function and assigns that m back outside its function - note of <<- operator
+		## note: only square matrix can be inversed
 		setinverse <- function(solve) m <<- solve(x)
 		## getinverse returns the inverse matrix m
 		getinverse <- function() m
@@ -35,12 +36,12 @@
         ## Return a matrix that is the inverse of 'x'
 		## calls the getinverse() method for the matrix x
 		m <- x$getinverse()
-		## check if m is not null, meaning it has cache the returns the cache	
+		## check if m is not null, meaning it has cache then returns the cache	
 		if(!is.null(m)) {
 			message("getting cached data")
 			return(m)
 		 }
-		## these codes below for the one that does not has cache
+		## these codes below for the one that does not have cache
 		data <- x$get()
 		m <- solve(data, ...)
 		x$setinverse(m)
