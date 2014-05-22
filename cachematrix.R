@@ -6,16 +6,16 @@
 ## makeCacheMatrix is a function that creates a special "matrix" object that can cache its inverse.
 	makeCacheMatrix <- function(x = matrix()) {
 	## if an object is called without a method then set them to NULL
-	## the operator <<- allows the object can be changed outside its function	
+	## the superassignment operator <<- allows the change/writing to a variable just one level up in the environment hierarchy	
 		m <- NULL
-		## set change the matrix x outsite its function with <<- operators
+		## set change the matrix x outsite its function (up 1 level) with  superassignment operator <<- 
 		set <- function(y) {
 			x <<- y
 			m <<- NULL
 		}
 		## get returns the matrix x
 		get <- function() x
-		## setinverse creates an inverse matrix m via the solve function and assigns that m back outside its function - note of <<- operator
+		## setinverse creates an inverse matrix m via the solve function and assigns that m back one level up (by the use of <<- operator)
 		## note: only square matrix can be inversed
 		setinverse <- function(solve) m <<- solve(x)
 		## getinverse returns the inverse matrix m
